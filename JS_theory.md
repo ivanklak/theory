@@ -250,7 +250,36 @@ console.log(num)
 ReferenceError
 ```
 
+## Closures
 
+- a function having access to the parent scope, even after the parent function has closed
+
+The `scope` basically is the set of variables which are visible.
+
+For exapmle: we have a function with its own variable `fw` inside. And this function return an object with two methods, that use parent variable. 
+`fw` is a private variable. We cant get it outside this parent function, but we can interact with variable inside. 
+
+```js 
+function createFramework() {
+  const fw = ['Angular', 'React'];
+  
+  return {
+      print: function() {
+          console.log(fw);
+      },
+      add: function(framework) {
+          fw.push(framework);
+      }
+  }
+}
+
+const manager = createFramework();
+
+manager.print(); // ['Angular', 'React']
+manager.add('VueJS');
+
+manager.print(); // ['Angular', 'React', 'VueJS']
+```
 
 
 
