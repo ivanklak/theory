@@ -96,5 +96,166 @@ console.log(cc);           // {k: 1, c: 0}
 console.log(cc === aa);    // false
 ```
 
+**Operators**
+
+`spred` and `rest` operators - these operators transmit their fields - different scope of application
+
+- spred - `(...array)` ; `({...obj})`
+- rest - `(a, b, ...rest)`
+
+## Objects
+
+- is an entity tht has its own `state` (valiables) and `behavior` (methods). 
+
+**this** - to access information inside an object, the method can use `this` keyword. `this` - is a reference to the some object. 
+
+**constructors** - a set of objects of the same type, that are created using `new` operator. `Constuructor` - it is a function that can takes some parameters. 
+
+```js 
+function Auto(name, model) {
+  this.name = name;
+  this.model = model;
+}
+
+let auto = new Auto('BMW', 'x3');
+
+console.log(auto.name + auto.model); // BMW x3
+```
+
+**Prototypal inheritance**
+
+- Each object has its own prototype, which is taken from the parent element. To get the parent prototype, the `__proto__` keyword is used. 
+
+`__proto__` - this keyword **indicates the prototype of the parent class or object** from which the object was created. 
+
+> If we refer to the property of an object, it first looks at whether the object itself has such a property, and then looks at the prototype.
+
+- the `prototype` property of functions is used **to pass properties for objects** (for expamle, that are created through the new operator).
+
+```js
+function Cat(name, color) {
+  this.name = name;
+  this.color = color;
+}
+
+Cat.prototype.voice = function() {
+  console.log(`Cat ${this.name} says myau`)
+}
+
+const cat = new Cat('Tom', 'blue');
+
+cat.voice() // 'Cat Tom says myau'
+```
+that is, we are extending the prototype of the parent class. 
+
+This is necessary, for example, not to import a function or object, but to immediately call the desired method.
+
+## Classes
+
+is an extensible code template for creating objects that sets their initial values(properties) and behavior implementation(methods).  
+
+A `class` can extend another class of object, and **inherit** all methods of both classes. If the inherited class has a method with the same name, the closest method takes precedence. 
+
+Inside the children class ypu can reference the parent class calling `super()`
+
+```js
+class Programmer extends Preson {
+  hello() {
+    return super.hello() + 'I am programmer'
+  }
+}
+
+const ivan = new Programmer('Ivan')
+
+console.log(ivan.hello()); // "Hi am Ivan. I am programmer" 
+
+//"Hi am Ivan" - from parent class
+```
+
+## Functions
+
+everything in JavaScript happens in functions. 
+
+`function` is a block of code, self contained, that can be defined once and run any times you want. 
+
+Functions in JS are onjects, a special kind of objects - **functional objects**. 
+
+**Functional expression**
+
+```js
+const square = function (num) {
+  return num * 2;
+}
+```
+
+**Named function expressions**
+
+```js
+const square = function bar(num) {
+  return num * 2;
+}
+
+square() // working
+bar() // Error
+```
+
+Why we use named function expressions:
+
+- You can use the name of that function when you need **recursion**.
+- Anonymous functions doesn't help when **debugging** as you can't see the name of the function that causes problems.
+- When you do not name a function, later on **its harder to understand what it's doing**. Giving it a name makes it easier to understand.
+
+**Functional decloration**
+
+```js
+function square(num) {
+  return num * 2;
+}
+```
+
+**Errow Functions**
+
+were introduced in ES6/ES2015, which are especially nice to use when working with inline functions, as parameters or callbacks
+
+```js
+const square = (num) => {
+  return num * 2;
+}
+```
+
+## Hoisting
+
+- work of interpreter - all functions are moved to the beginning of the file, so you can call the function before it is defined. 
+
+`var`
+
+```js
+console.log(i);
+var i = 42;
+console.log(i)
+
+//output
+undefined
+42
+```
+
+Variables `let` and `const` dont supported Hoisting. 
+
+```js
+console.log(num);
+const num = 42;
+console.log(num)
+
+//output
+ReferenceError
+```
+
+
+
+
+
+
+
+
 
 
