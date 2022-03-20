@@ -2,7 +2,7 @@
 
 ## 1. Common questions 
 
-**Java Script** 
+**JavaScript** 
 - programming language that allows you to implement complex features on webpage
 - is single-threaded language, which means it has only one call stack is used to execute program /**any given time Js can do only one operation**/
 
