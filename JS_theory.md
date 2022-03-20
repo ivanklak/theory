@@ -281,6 +281,99 @@ manager.add('VueJS');
 manager.print(); // ['Angular', 'React', 'VueJS']
 ```
 
+## IIFE
+**Immediate Involked Function Expression**
+
+- is a JavaScript function that runs as soon as it is defined. - often to create a local scope
+
+It is a design pattern which is also known as a **Self-Executing Anonymous Function** and contains two major parts:
+
+- The first is the **anonymous function** with lexical scope enclosed within the Grouping Operator (). Due to this, IIFE variables are closed inside it, and the global scope is not clogged with them.
+- The second part creates the **immediately invoked function expression ()** through which the JavaScript engine will directly interpret the function.
+
+The variable to which `IIFE` is assigned, stores the result of the function execution, but not the function itself:
+
+```js
+var result = (function () {
+    var name = "Barry";
+    return name;
+})();
+// Immediately creates the output:
+result; // "Barry"
+```
+
+```js
+for (var i = 0; i < 5; i++) {
+  (function() {
+    var j = i;
+    result.push( function() {console.log(j)} )
+  })()
+}
+
+result[2](); //2
+result[4](); //4
+```
+
+## Context
+
+`Context` in JavaScript is related to objects. It refers to the object within the function being executed. `this` refers to the object that the function is executing in.
+
+```js
+const person = {
+  surname: 'Stark',
+  knows: function(what, name) {
+    console.log(`You know ${what}, ${name} ${this.surname}`)
+  }
+}
+person.knows('everything', 'Bran'); // You know everything, Bran Stark
+
+const john = {surname: 'Snow'};
+person.knows.call(john, 'nothing', 'John'); // You know nothing, John Snow
+```
+
+We call the `knows` function in the context of `john`
+
+**Methods**
+
+- `call(context, param1, param2)` - calls the function immediately. 
+- `apply(context, [param1, param2])` - call the function immediately. 
+- `bind(context, param1, param2)` - return a new function: 
+
+```js
+const blach = person.kwows.bind(john, 'nothing', 'John');
+
+blach();
+```
+
+**Context In Classes transmited using `new` operator**
+
+**Errow functions**
+
+- don't create a new context, but refers to the endclosing function context, which in some cases might be a `window` object. 
+
+`this` in the function expression refers to parent scope, looking for variables. 
+
+```js
+const car = {
+  brand: 'Ford';
+  model: 'Fiesta';
+  start: functon() {
+    console.log(`Started ${this.brand} ${this.model}`)
+  },
+  stop: () => {
+    console.log(`Stopped ${this.brand} ${this.model}`)
+  }
+}
+
+car.start(); // Started Ford Fiesta
+car.stop(); // Stopped Undefined undefined
+```
+**Arrow functions are not suitable to be used for object methods and contructors**
+
+
+
+
+
 
 
 
