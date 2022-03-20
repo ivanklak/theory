@@ -33,5 +33,34 @@ setInterval()
 
 **lifecycle methods** - can be ddefined as the series of methods that are involked in different stages of the components existanse.
 
+**REST**
+
+`REST` - Representatinal State Transfer - a set of rules that define how a programmer can organize the writing of a server-side web application code so that all systems can easily exchange data and the application can be scaled. 
+
+`RESTful` - the service is written according to all REST rules - it is an application that provides a list of URLs with which the server can accept requests such as: GET, PUT, POST, DELETE or OPTIONS. Using the URL, the service understands which data to work with and which objects to get or update or delete.
+
+**HTTP**
+
+`HTTP` - agreement on the format of text files that go between the server and the client - this allows you to make requests through the browser and exchange information in the request body.
+
+`HTTPS` - this is the same thing, but the information is encrypted. The site must receive an **SSL certificate**. 
+
+`HTTP method` is **idempotent** if a repeated identical request has the same effect without changing the state of the server.
+
+Idempotent mothods: GE, PUT, DELETE, OPTIONS
+non-idempotent mothod: POST - a repeated call can, for example, place an order on the website 2 times. 
+
+OPTIONS - description of connection parameters - we can find out which query methods the server supports. 
+
+**CORS**
+
+`CORS` - Cross-Origin Resource Sharing - a technology that **uses additional headers** to allow a user agent to get **permission to access resources from a server** on a domain other than what the site is currently using. 
+
+
+
+
+
+
+
 
 
