@@ -370,12 +370,67 @@ car.stop(); // Stopped Undefined undefined
 ```
 **Arrow functions are not suitable to be used for object methods and contructors**
 
+## Event Loop
 
+It solves one main problem: 
 
+The event loop continuosly checks tha call stack to see, if there is any function that needs to run. While doing so, it adds any function call, it finds, to the call stack, and executes each one in order. 
 
+```js 
+console.log('1');
+setTimeout( () => console.log('2'), 100); 
+console.log('3');
 
+// Output: 1 3 2
+```
 
+![5c5b41e37c793ce1fad4f342257bbede](https://user-images.githubusercontent.com/57959373/159160191-4d1be6fa-0a94-4384-b80c-3299922ea603.gif)
 
+`setTimeout` - JS does not know how to work with it, so it gives the execution of this function to a `third-party API` (Web Api)  and cleans the call stack. 
+
+The function passed to `setTimeout` gets into the `Callback Queue` and then gets into the `Call Stack`
+
+## Promises
+
+- it is a special object in JavaScript that has three states: `pending`, `resolve`, `reject`. 
+
+How promises work:
+1. Once a `promise` has been called, it will start in **pending state**. This mean that the caller function continues the execution, while waits some feedback from `promise`. 
+2. At this point the caller function waits for it yo either return the promise in a resolved state or in a rejected state. 
+
+To create Promise: `new Promise()`
+
+```js 
+const isMomHappy = true;
+
+const willIGetNewPhone = new Promise(
+  function(resolve, reject) {
+    if (isMomHappy) {
+      const phone = {brand: 'APPLE', color: 'black'}
+      resolve(phone);
+    } else {
+      const reason = new Error('mom has a bad mood')
+      reject(reason);
+    }
+  }
+)
+```
+
+Involke `promise`:
+
+```js
+ const askMom = function() {
+  willIGetNewPhone
+         .then((phone) => {
+           console.log(phone);
+         })
+         .catch((error) => {
+           console.log(error.message);
+         })
+ }
+ 
+ askMom(); 
+```
 
 
 
