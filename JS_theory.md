@@ -390,6 +390,29 @@ console.log('3');
 
 The function passed to `setTimeout` gets into the `Callback Queue` and then gets into the `Call Stack`
 
+**Microtasks and Macrotasks**
+
+`Microtasks` come solely from our code. They are usually created by promises: an execution of `.then/catch/finally` handler becomes a microtask.
+
+`Macrotasks` include keyboard events, mouse events, timer events, network events, Html parsing. 
+
+Separation of macro and microtask enables the event loop **to prioritize types of tasks**; for example, giving priority to performance-sensitive tasks.
+
+Immediately after every `macrotask`, the engine executes **all** tasks from `microtask queue`, prior to running any other macrotasks or rendering or anything else.
+
+A more detailed event loop algorithm:
+
+1. Dequeue and run the oldest task from the `macrotask queue` (e.g. “script”)
+2. Execute all microtasks:
+- While the `microtask` queue is not empty: Dequeue and run the oldest `microtask`.
+3. Render changes if any.
+4. If the `macrotask queue` is empty, wait till a macrotask appears.
+5. Go to step 1.
+
+`macrotasks`: setTimeout, setInterval, setImmediate, requestAnimationFrame, I/O, UI rendering
+
+`microtasks`: process.nextTick, Promises, queueMicrotask, MutationObserver
+
 ## Promises
 
 - it is a special object in JavaScript that has three states: `pending`, `resolve`, `reject`. 
@@ -431,6 +454,55 @@ Involke `promise`:
  
  askMom(); 
 ```
+Promises are asynchonous: 
+
+```js
+console.log(1);
+const promise = new Promise((resolve) => {
+     console.log(3);
+     setTimeout(() => console.log(2), 5000);
+     throw new Error("Ups...");
+     resolve();
+ });
+ promise.then(() => console.log(4));
+ // promise.catch(() => console.log(5));
+ console.log(7);
+     const p = promise.catch(() => console.log(5));
+     p.then(() => console.log('then'));
+     p.catch(() => console.log('catch'));
+ setTimeout(() => console.log(6), 2000);
+
+// 1, 3, 7, 5, 'then', Error, 6, 2
+```
+
+It is because JS waits no one. 
+
+Anything that needs to be executed after the promise must be inserted into `promise.then()`
+
+## Async / await
+
+JavaScript ES8 introduced the `async/await` construct, which simplifies working with promises.
+
+**Asynchronous functions are declared using the `async` keyword.** Such a function returns an **AsyncFunction** object. This object is an asynchronous function that executes the code inside it. 
+
+When an asynchronous function is called, it returns a `Promise` object.
+
+**`await` suspends the execution of the function and waits for the promise to be resolved.** After that, the execution of the async function continues, and, for example, the value received after the promise resolution is returned.
+
+```js
+async function f() {
+  let promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('okay'), 1000)
+  })
+  let result = await promise;
+  
+  console.log(result);
+}
+
+f();
+```
+
+
 
 
 
