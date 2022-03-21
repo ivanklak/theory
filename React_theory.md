@@ -21,6 +21,12 @@ In React this means that:
 
 4. **JSX** - syntax for describing the interface structure. 
 5. **isomorphism** -  this means that the server renders the initial HTML for the client using React components. 
+6. **one-way data flow**, which describes this sequence of steps to update the app:
+
+- State describes the condition of the app at a specific point in time
+- The UI is rendered based on that state
+- When something happens (such as a user clicking a button), the state is updated based on what occurred
+- The UI re-renders based on the new state
 
 React is executed on the client side and rendered on the server side. 
 
@@ -244,6 +250,70 @@ Thus, React determines which elements have been changed, added or removed. This 
 **indexes cannot be used as a `key`**, because the array elements may change, but the indexes will remain the same. The best way is to use the `id` of the elements.
 
 `key = {u.id}`
+
+## React router
+
+- a set of components that determines which component will be rendered based on the current path. 
+
+`BrowserRouter` - when dynamic requests are processed on the server. 
+
+`HashRouter` - when website is static. 
+
+`Route` - it's a React Router building block - it changes the content of the page depending on the pathname 
+
+# Redux
+
+- is a library used for ddata storage for any UI layer. 
+
+**`store` - js-object, which contains all the states of our application.**
+
+`getState`- this method returns the current state value. 
+
+`dispatch`- The only way to update the state is to call `store.dispatch()` and pass in an action object. The store will run its `reducer` function and save the new state value inside. 
+
+`Selectors` - are functions that know how to extract specific pieces of information from a store state value. As an application grows bigger, this can help avoid repeating logic as different parts of the app need to read the same data. 
+
+**`action` - An action is a plain JavaScript object that has a type field.** it is like an event that describes something that happened in the application.
+
+An action object can have **other fields with additional information** about what happened. By convention, we put that information in a field called `payload`.
+
+A typical action object:
+
+```js
+const addTodoAction = {
+  type: 'todos/todoAdded',
+  payload: 'Buy milk'
+}
+```
+
+## Reducer 
+
+A `reducer` is a function that receives the current state and an action object, decides how to update the state if necessary, and returns the new state.
+
+It is like an **event listener** which handles events based on the received action (event) type.
+
+Reducers are **pure functions** that take the previous state and an action, and return the next state.
+
+## Single Source of Truth​
+
+The global state of your application is stored as an object inside a single store.
+
+## Redux Application Data Flow​
+
+**Initial setup:**
+- A Redux store is created using a root reducer function
+- The store calls the root reducer once, and saves the return value as its initial state
+- When the UI is first rendered, UI components access the current state of the Redux store, and use that data to decide what to render. They also subscribe to any future store updates so they can know if the state has changed.
+
+**Updates:**
+- Something happens in the app, such as a user clicking a `button`. 
+- The app code `dispatches an action` to the Redux store, like `dispatch({type: 'counter/incremented'})`. 
+- The store runs the `reducer` function again with the previous state and the current action, and saves the return value as the new state. 
+- The `store` notifies all parts of the UI that are subscribed that **the store has been updated**. 
+- Each UI component that needs data from the store checks to see if the parts of the state they need have changed.
+- Each component that sees its data has changed forces a re-render with the new data, so it can update what's shown on the screen. 
+
+![ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26](https://user-images.githubusercontent.com/57959373/159288571-040449c5-2d97-4387-9087-89405a8e603a.gif)
 
 
 
