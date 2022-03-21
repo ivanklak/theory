@@ -207,6 +207,45 @@ function TextInputWithFocusButton() {
 
 For example: to make `focus()` on the element, interact with text or as a second parameter in React.createPortal. 
 
+## HOCs
+
+ `higher-order component` is a function that takes a component and returns a new component (Container component) - transforms a component into another component.
+
+```js
+const EnhancedComponent = higherOrderComponent(WrappedComponent);
+```
+
+`HOC` doesn’t modify the input component. HOC `composes` the original component by `wrapping` it in a container component. The wrapped component receives all the props of the container, along with a new prop, data, which it uses to render its output.  
+
+A HOC is a `pure function` with zero side-effects.
+
+**HOCs add features to a component.** 
+
+The most common signature for HOCs looks like this:
+
+```js
+// React Redux's `connect`
+const ConnectedComment = connect(commentSelector, commentActions)(CommentList);
+```
+
+In other words, **`connect` is a higher-order function that returns a higher-order component!**
+
+**To subscribe** to the Redux repository update, you can pass the `mapStateToProps` function to `connect()` and this function will always be called when the state of the wound changes. 
+
+`mapDispatchToProps` - passes functions to the child component that it can call, so the dispatch function is also passed.
+
+## key attribute
+
+- this is a special string attribute that you need to use when creating a list of items. 
+- this is necessary to identify the element. 
+
+Thus, React determines which elements have been changed, added or removed. This is necessary so that React can match the array elements over time.
+
+**indexes cannot be used as a `key`**, because the array elements may change, but the indexes will remain the same. The best way is to use the `id` of the elements.
+
+`key = {u.id}`
+
+
 
 
 
