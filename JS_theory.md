@@ -413,6 +413,12 @@ A more detailed event loop algorithm:
 
 `microtasks`: process.nextTick, Promises, queueMicrotask, MutationObserver
 
+## Event delegation
+
+The idea is that if we have **a lot of elements** handled in a similar way, then instead of assigning a handler to each of them – we put a **single handler** on their common ancestor.
+
+> Lets say we have a table with 99 cells. And our task is to highlight a cell `<td>` on click. Instead of assign an onclick handler to each `<td>` – we’ll setup the “catch-all” handler on `<table>` element. It will use `event.target` to get the clicked element and highlight it.
+
 ## Promises
 
 - it is a special object in JavaScript that has three states: `pending`, `resolve`, `reject`. 
