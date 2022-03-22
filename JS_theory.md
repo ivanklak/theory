@@ -107,7 +107,12 @@ console.log(cc === aa);    // false
 
 - is an entity tht has its own `state` (valiables) and `behavior` (methods). 
 
-**this** - to access information inside an object, the method can use `this` keyword. `this` - is a reference to the some object. 
+**this** - to access information inside an object, the method can use `this` keyword. `this` - is a reference to the some object and depends on how the function is called: 
+
+- If the `new` keyword is used when calling the function, `this` inside the function [constructor] is **a brand new object**.
+- If `apply`, `call`, or `bind` are used to call/create a function [involke function with Context], `this` inside the function is **the object that is passed in as the argument**.
+- If arrow function uses as a object method, `this` is the **global object**. In a browser, it is the `window` object.
+- If the function is an **arrow function**, it receives the `this` value of its surrounding scope at the time it is created.
 
 **constructors** - a set of objects of the same type, that are created using `new` operator. `Constuructor` - it is a function that can takes some parameters. 
 
