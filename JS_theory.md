@@ -11,7 +11,41 @@
 7. `bigInt` - JS addded this method to work with integers of arbitrary length. At the end of the number, put the "n" letter. 
 8. `symbol` - Symbol is a primitive type for unique identifiers. Symbols are created with `Symbol()` call with an optional description (name). Symbols are always different values, even if they have the same name.
 
-**Type Conversions**
+**Question**
+
+What's the difference between a variable that is: null, undefined or undeclared?
+
+> **Undeclared variables** are created when you assign a value to an identifier that is not previously created using `var`, `let` or `const`. Undeclared variables will be defined globally, outside of the current scope.
+
+```js
+function foo() {
+  x = 1; // Throws a ReferenceError in strict mode
+}
+
+foo();
+console.log(x); // 1
+```
+
+> A variable that is `undefined` is a variable that **has been declared, but not assigned a value**. It is of type `undefined`. If a function does not return any value as the result of executing it is assigned to a variable, the variable also has the value of `undefined`.
+
+```js
+var foo;
+console.log(foo); // undefined
+console.log(foo === undefined); // true
+console.log(typeof foo === 'undefined'); // true
+```
+
+> A variable that is `null` will have been explicitly assigned to the `null` value. It represents **no value** and is different from `undefined` in the sense that **it has been explicitly assigned**. 
+
+```js
+var foo = null;
+console.log(foo === null); // true
+console.log(typeof foo === 'object'); // true
+```
+
+**Type Conversions** - JavaScript variables can be converted to a new variable and another data type. 
+
+The global method `Number()` can convert strings to numbers.
 
 `False` values: '', 0, null, undefined, Nan, false
 
@@ -127,13 +161,43 @@ let auto = new Auto('BMW', 'x3');
 console.log(auto.name + auto.model); // BMW x3
 ```
 
-**Prototypal inheritance**
+## Prototypal inheritance
 
 - Each object has its own prototype, which is taken from the parent element. To get the parent prototype, the `__proto__` keyword is used. 
 
 `__proto__` - this keyword **indicates the prototype of the parent class or object** from which the object was created. 
 
-> If we refer to the property of an object, it first looks at whether the object itself has such a property, and then looks at the prototype.
+> When a property is accessed on an object and **if the property is not found on that object**, the JavaScript engine looks at the object's `__proto__`, and the `__proto__`'s `__proto__` and so on, until it finds the property defined on one of the` __proto__`s or until it reaches the end of the prototype chain.
+
+```js
+function Parent() {
+  this.name = 'Parent';
+}
+
+Parent.prototype.greet = function () {
+  console.log('Hello from ' + this.name);
+};
+
+const child = Object.create(Parent.prototype);
+
+child.cry = function () {
+  console.log('waaaaaahhhh!');
+};
+
+child.cry();
+// waaaaaahhhh!
+
+child.greet();
+// hello from Parent
+
+child.constructor;
+// ƒ Parent() {
+//   this.name = 'Parent';
+// }
+
+child.constructor.name;
+// 'Parent'
+```
 
 - the `prototype` property of functions is used **to pass properties for objects** (for expamle, that are created through the new operator).
 
@@ -151,7 +215,7 @@ const cat = new Cat('Tom', 'blue');
 
 cat.voice() // 'Cat Tom says myau'
 ```
-that is, we are extending the prototype of the parent class. 
+that is, we are **extending the prototype of the parent class**. 
 
 This is necessary, for example, not to import a function or object, but to immediately call the desired method.
 
@@ -318,6 +382,18 @@ for (var i = 0; i < 5; i++) {
 result[2](); //2
 result[4](); //4
 ```
+
+**Question**
+
+Explain why the following doesn't work as an IIFE: `function foo(){ }()`
+
+> 1. Statements that begin with function are considered to be **function declarations**; by wrapping this function within `()`, it becomes a **function expression** which can then be executed with the subsequent `()`. And these functions are not exposed in the global scope. 
+
+```js
+(function foo(){ })() // - function expression
+```
+
+> 2. You might also use `void` operator: `void function foo(){ }();`. Unfortunately, there is one issue with such approach. The evaluation of given expression is always `undefined`, so if your IIFE function returns anything, you can't use it. 
 
 ## Context
 
