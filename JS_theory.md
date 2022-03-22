@@ -72,7 +72,6 @@ A variable initialized with `var` inside of any function is assigned to that fun
 
 Definig `let` outside of any function - does not create a global variable. 
 
-
 **const**
 
 `const` - immutable. A once a `const` is initialized, its value can never be changed again (that work only for primitive types, we can change fields in arrays and in objects). Has a block scope. 
@@ -292,9 +291,18 @@ const square = (num) => {
 }
 ```
 
+**Question**
+
+What's a typical use case for anonymous functions?
+
+> - They can be used in `IIFEs` to encapsulate some code within a local scope so that variables declared in it do not leak to the global scope. `(function () {})();`
+> - As a callback that is used once and does not need to be used anywhere else. `setTimeout(function () {}, 0)`
+> - Arguments to functional programming constructs. `arr.map(() => {})`
+
+
 ## Hoisting
 
-- work of interpreter - all functions are moved to the beginning of the file, so you can call the function before it is defined. 
+- work of interpreter - all functions are moved up to the top of their module/function-level scope, so you can call the function before it is defined. 
 
 `var`
 
@@ -308,7 +316,7 @@ undefined
 42
 ```
 
-Variables `let` and `const` dont supported Hoisting. 
+Variables declared via `let` and `const` are hoisted as well. But they are not initialized and accessing them before the declaration will result in a `ReferenceError` exception. [Variables `let` and `const` dont supported Hoisting].
 
 ```js
 console.log(num);
@@ -499,6 +507,11 @@ A more detailed event loop algorithm:
 The idea is that if we have **a lot of elements** handled in a similar way, then instead of assigning a handler to each of them – we put a **single handler** on their common ancestor.
 
 > Lets say we have a table with 99 cells. And our task is to highlight a cell `<td>` on click. Instead of assign an onclick handler to each `<td>` – we’ll setup the “catch-all” handler on `<table>` element. It will use `event.target` to get the clicked element and highlight it.
+
+## Describe event bubbling.
+
+Event bubbling is the mechanism behind **event delegation.**
+When an event triggers on a DOM element, it will attempt to handle the event if there is a listener attached, then the event is bubbled up to its parent and the same thing happens. This bubbling occurs up the element's ancestors all the way to the document. 
 
 ## Promises
 
