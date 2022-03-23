@@ -51,7 +51,7 @@ The global method `Number()` can convert strings to numbers.
 
 **`==` vs `===`**
 
-`==` - non-strict equality operator, with type conversion. This means `2 == '2'` id `true`, and `undefined == null` is `true`, `'0' == false` is `true`
+`==` - abstract equality operator, with type conversion. This means `2 == '2'` id `true`, and `undefined == null` is `true`, `'0' == false` is `true`
 
 `===` - strict equality operator whitch return `true` when the two operands are having the same value without any type conversion. This means `2 === '2'` is `false` and `undefined === null` is `false`
 
