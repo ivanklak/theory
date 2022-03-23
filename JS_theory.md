@@ -76,6 +76,13 @@ Definig `let` outside of any function - does not create a global variable.
 
 `const` - immutable. A once a `const` is initialized, its value can never be changed again (that work only for primitive types, we can change fields in arrays and in objects). Has a block scope. 
 
+**What are the differences between variables created using let, var or const?**
+
+> - Variables declared using the `var` keyword are scoped to the function in which they are created, or if created outside of any function, to the global object. `let` and `const` are block scoped, meaning they are only accessible within the nearest set of curly braces (function, if-else block, or for-loop).
+> - `var` allows variables to be **hoisted**, meaning they can be referenced in code before they are declared. `let` and `const` will **not allow this**, instead throwing an `error`.
+> - Redeclaring a variable with `var` will not throw an error, but `let` and `const` will.
+> - `let` allows reassigning the variable's value while `const` does not.
+
 **Copy and change values**
 
 ```js
@@ -224,7 +231,9 @@ is an extensible code template for creating objects that sets their initial valu
 
 A `class` can extend another class of object, and **inherit** all methods of both classes. If the inherited class has a method with the same name, the closest method takes precedence. 
 
-Inside the children class ypu can reference the parent class calling `super()`
+Inside the children class ypu can reference the parent class calling `super()`. 
+
+In the constructor, the `super()` keyword is used as a function calling the parent constructor. It must be called before the first access to the `this` keyword in the constructor body. The `super` keyword can also be used to call functions of the parent object.
 
 ```js
 class Programmer extends Preson {
@@ -240,6 +249,50 @@ console.log(ivan.hello()); // "Hi am Ivan. I am programmer"
 //"Hi am Ivan" - from parent class
 ```
 
+**What are the differences between ES6 class and ES5 function constructors?**
+
+Let's first look at example of each:
+
+```js
+// ES5 Function Constructor
+function Person(name) {
+  this.name = name;
+}
+
+// ES6 Class
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+}
+```
+
+**The main difference in the constructor comes when using inheritance.** If we want to create a `Student` class that subclasses `Person` and add a `studentId` field, this is what we have to do in addition to the above.
+
+```js
+// ES5 Function Constructor
+function Student(name, studentId) {
+  // Call constructor of superclass to initialize superclass-derived members.
+  Person.call(this, name);
+
+  // Initialize subclass's own members.
+  this.studentId = studentId;
+}
+
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.constructor = Student;
+
+// ES6 Class
+class Student extends Person {
+  constructor(name, studentId) {
+    super(name);
+    this.studentId = studentId;
+  }
+}
+```
+
+The ES6 version is easier to understand and remember.
+
 ## Functions
 
 everything in JavaScript happens in functions. 
@@ -248,7 +301,7 @@ everything in JavaScript happens in functions.
 
 Functions in JS are onjects, a special kind of objects - **functional objects**. 
 
-**Functional expression**
+**Function expression**
 
 ```js
 const square = function (num) {
@@ -273,7 +326,7 @@ Why we use named function expressions:
 - Anonymous functions doesn't help when **debugging** as you can't see the name of the function that causes problems.
 - When you do not name a function, later on **its harder to understand what it's doing**. Giving it a name makes it easier to understand.
 
-**Functional decloration**
+**Function decloration**
 
 ```js
 function square(num) {
@@ -299,6 +352,9 @@ What's a typical use case for anonymous functions?
 > - As a callback that is used once and does not need to be used anywhere else. `setTimeout(function () {}, 0)`
 > - Arguments to functional programming constructs. `arr.map(() => {})`
 
+Can you offer a use case for the new arrow => function syntax? How does this new syntax differ from other functions?​
+
+> One obvious benefit of arrow functions is to simplify the syntax needed to create functions, without a need for the function keyword. The this within arrow functions is also bound to the enclosing scope which is different compared to regular functions where the this is determined by the object calling it. Lexically-scoped this is useful when invoking callbacks especially in React components.
 
 ## Hoisting
 
@@ -317,6 +373,8 @@ undefined
 ```
 
 Variables declared via `let` and `const` are hoisted as well. But they are not initialized and accessing them before the declaration will result in a `ReferenceError` exception. [Variables `let` and `const` dont supported Hoisting].
+
+If you try to invoke a `function expression` before it is defined, you will get an `Uncaught TypeError: XXX` is not a function error.
 
 ```js
 console.log(num);
@@ -403,9 +461,29 @@ Explain why the following doesn't work as an IIFE: `function foo(){ }()`
 
 > 2. You might also use `void` operator: `void function foo(){ }();`. Unfortunately, there is one issue with such approach. The evaluation of given expression is always `undefined`, so if your IIFE function returns anything, you can't use it. 
 
+## Recursion
+
+A function that calls itself is called a **recursive function**. A call to a recursive function is called a recursive call.
+
+As an example, we calculate the factorial using recursion:
+
+```js
+function f(n) {
+  if (n === 1) return 1;
+  return n * f(n - 1);
+}
+console.log(f(4)); //24
+```
+
+The execution of the program repeatedly **descends down until it hits the condition for exiting recursion**. Having reached the end, it goes back, **returning the results** of the calls made.
+
 ## Context
 
 `Context` in JavaScript is related to objects. It refers to the object within the function being executed. `this` refers to the object that the function is executing in.
+
+A recursive function must have a **termination condition**, if it is not specified, the function will be called until **the maximum recursion depth** is reached, then an exception will be generated.
+
+The total number of nested calls is called **the recursion depth**.
 
 ```js
 const person = {
@@ -463,7 +541,7 @@ car.stop(); // Stopped Undefined undefined
 
 It solves one main problem: 
 
-The event loop continuosly checks tha call stack to see, if there is any function that needs to run. While doing so, it adds any function call, it finds, to the call stack, and executes each one in order. 
+The event loop continuosly checks tha call stack to see, if there is any function that needs to run and checks if there is any work to be done in the task queue. If the call stack is empty and there are **callback functions in the task queue**, a function is dequeued and pushed onto the call stack to be executed. [While doing so, it adds any function call, it finds, to the call stack, and executes each one in order.]
 
 ```js 
 console.log('1');
