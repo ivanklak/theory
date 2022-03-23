@@ -24,3 +24,27 @@
 
 `:sticky` - Sticky element -  the element remains in the normal flow of the document, then the element sticks to the nearest scrolling parent and scrolls with it.
 
+## Selectors & Specificity
+
+Main types: 
+
+- `*` - any elements
+- `div` - tag
+- `#id`
+- `.class`
+- [name="value"] - selector on attribute 
+- `:visited` - pseudo-classes
+
+The browser determines what styles to show on an element depending on the specificity of CSS rules.
+
+The specificity, four comma-separate values, `a, b, c, d` are calculated for each rule based on the following:
+
+- `a` is whether **inline styles** are being used. If the property declaration is an inline style on the element, a is 1, else 0.
+- `b` is the number of **ID selectors**.
+- `c` is the number of **classes, attributes and pseudo-classes selectors**.
+- `d` is the number of **tags and pseudo-elements selectors**.
+
+**The resulting specificity is a matrix of values** that can be compared column by column. When comparing selectors to determine which has the highest specificity, look from left to right, and compare the highest value in each column. So a value in column `b` will override values in columns `c` and `d`, no matter what they might be.
+
+**In the cases of equal specificity: the latest rule is the one that counts.** If you have written the same rule into your stylesheet (regardless of internal or external) twice, then the lower rule in your style sheet is closer to the element to be styled, it is deemed to be more specific and therefore will be applied.
+
