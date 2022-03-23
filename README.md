@@ -22,7 +22,7 @@ setInterval()
 
 **CSS** - (Cascading Style Sheets) - is a language of style rules that we use to apply styling to our HTML content. 
 
-**SPA** - Single Page Application
+**SPA** - Single Page Application - this is a web application or website that uses a **single HTML document as a wrapper for all web pages** and organizes user interaction through dynamically loaded `HTML`, `CSS`, `JavaScript`, usually via `AJAX`.
 
 **React** - is a JS library that is used for building user interfaces specifically for single-page application. 
 
