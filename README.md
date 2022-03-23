@@ -22,6 +22,8 @@ setInterval()
 
 **CSS** - (Cascading Style Sheets) - is a language of style rules that we use to apply styling to our HTML content. 
 
+**SPA** - Single Page Application
+
 **React** - is a JS library that is used for building user interfaces specifically for single-page application. 
 
 **Redux** - is a library used for ddata storage for any UI layout. 
