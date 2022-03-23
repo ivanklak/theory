@@ -138,7 +138,31 @@ console.log(cc === aa);    // false
 
 **Operators**
 
-`spred` and `rest` operators - these operators transmit their fields - different scope of application
+`spred` and `rest` operators - these operators transmit their fields - different scope of application. 
+
+**ES6's spread syntax** is very useful when coding in a functional paradigm as we can easily create copies of arrays or objects without resorting to `Object.create`, `slice`, or a library function. This language feature is used often in Redux and RxJS projects.
+
+```js
+const person = {
+  name: 'Todd',
+  age: 29,
+};
+
+const copyOfTodd = {...person};
+```
+
+**rest** - It is like **an inverse of the spread syntax**, taking data and stuffing it into an array [rather than unpacking an array of data], and it works in function arguments, as well as in array and object destructuring assignments.
+
+```js
+const [a, b, ...rest] = [1, 2, 3, 4]; // a: 1, b: 2, rest: [3, 4]
+
+const {e, f, ...others} = {
+  e: 1,
+  f: 2,
+  g: 3,
+  h: 4,
+}; // e: 1, f: 2, others: { g: 3, h: 4 }
+```
 
 - spred - `(...array)` ; `({...obj})`
 - rest - `(a, b, ...rest)`
@@ -317,6 +341,10 @@ class Student extends Person {
 ```
 
 The ES6 version is easier to understand and remember.
+
+**Why you might want to create static class members?​**
+
+**Static class members** (properties/methods) are not tied to a specific instance of a class and have the same value regardless of which instance is referring to it. Static properties are typically configuration variables and static methods are usually pure utility functions which do not depend on the state of the instance.
 
 ## Functions
 
