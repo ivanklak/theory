@@ -167,6 +167,31 @@ let auto = new Auto('BMW', 'x3');
 console.log(auto.name + auto.model); // BMW x3
 ```
 
+**Distructoring**
+
+Destructuring is an expression available in ES6 which enables a succinct and convenient way to extract values of Objects or Arrays and place them into distinct variables.
+
+```js
+const foo = ['one', 'two', 'three'];
+const [one, two, three] = foo;
+
+// Swapping variables
+let a = 1;
+let b = 3;
+
+[a, b] = [b, a];
+console.log(a); // 3
+console.log(b); // 1
+
+// Variable assignment.
+const o = {p: 42, q: true};
+const {p, q} = o;
+
+console.log(p); // 42
+console.log(q); // true
+```
+
+
 ## Prototypal inheritance
 
 - Each object has its own prototype, which is taken from the parent element. To get the parent prototype, the `__proto__` keyword is used. 
@@ -477,6 +502,11 @@ console.log(f(4)); //24
 
 The execution of the program repeatedly **descends down until it hits the condition for exiting recursion**. Having reached the end, it goes back, **returning the results** of the calls made.
 
+## higher-order function
+
+> A **higher-order function is any function that takes one or more functions as arguments, which it uses to operate on some data, and/or returns a function as a result**. Higher-order functions are meant to **abstract some operation that is performed repeatedly**. The classic example of this is `map`, which takes an array and a function as arguments. `map` then uses this function to transform each item in the array, returning a new array with the transformed data. Other popular examples in JavaScript are `forEach`, `filter`, and `reduce`. 
+> A higher-order function doesn't just need to be manipulating arrays as there are many use cases for returning a function from another function. `Function.prototype.bind` is one such example in JavaScript.
+
 ## Context
 
 `Context` in JavaScript is related to objects. It refers to the object within the function being executed. `this` refers to the object that the function is executing in.
@@ -536,6 +566,42 @@ car.start(); // Started Ford Fiesta
 car.stop(); // Stopped Undefined undefined
 ```
 **Arrow functions are not suitable to be used for object methods and contructors**
+
+**What advantage is there for using the arrow syntax for a method in a `constructor`?**
+
+> **The main advantage of using an arrow function as a method inside a constructor is that the value of `this` gets set at the time of the function creation and can't change after that.** So, when the constructor is used to create a new object, this will always refer to that object. For example, let's say we have a `Person `constructor that takes a first name as an argument has two methods to `console.log` that name, one as a regular function and one as an arrow function:
+
+```js
+const Person = function (firstName) {
+  this.firstName = firstName;
+  this.sayName1 = function () {
+    console.log(this.firstName);
+  };
+  this.sayName2 = () => {
+    console.log(this.firstName);
+  };
+};
+
+const john = new Person('John');
+const dave = new Person('Dave');
+
+john.sayName1(); // John
+john.sayName2(); // John
+
+// The regular function can have its 'this' value changed, but the arrow function cannot
+john.sayName1.call(dave); // Dave (because "this" is now the dave object)
+john.sayName2.call(dave); // John
+
+//same with .apply and .bind methods
+
+var sayNameFromWindow1 = john.sayName1;
+sayNameFromWindow1(); // undefined (because 'this' is now the window object)
+
+var sayNameFromWindow2 = john.sayName2;
+sayNameFromWindow2(); // John
+```
+
+> The main takeaway here is that `this` can be changed for a normal function, but **the context always stays the same for an arrow function**. So even if you are passing around your arrow function to different parts of your application, **you wouldn't have to worry about the context changing.**
 
 ## Event Loop
 
@@ -680,9 +746,37 @@ async function f() {
 f();
 ```
 
+## Curry function
 
+**Currying** is a pattern where a function with more than one parameter is broken into multiple functions that, when called in series, will **accumulate all of the required parameters one at a time**. This technique can be useful for making code written in a functional style easier to read and compose.
 
+**Currying** is the transformation of functions so that they take arguments not as `f(a, b, c)`, but as `f(a)(b)(c)`. Currying does not call the function. It just transforms her.
 
+Let's create an auxiliary function `curry(f)`, which performs currying of the function `f` with two arguments. In other words, `curry(f)` for a function `f(a,b)` transforms it into `f(a)(b)`.
+
+```js
+function curry(f) { // curry(f) perform curring
+  return function(a) {
+    return function(b) {
+      return f(a, b);
+    };
+  };
+}
+
+// using
+function sum(a, b) {
+  return a + b;
+}
+
+let curriedSum = curry(sum);
+
+alert( curriedSum(1)(2) ); // 3
+```
+As you can see, the implementation is simple: it’s just two wrappers.
+
+- The result of `curry(func)` is a wrapper `function(a)`.
+- When it is called like `curriedSum(1)`, the argument is saved in the Lexical Environment, and a new wrapper is returned `function(b)`.
+- Then this wrapper is called with 2 as an argument, and it passes the call to the original `sum`.
 
 
 
