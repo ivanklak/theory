@@ -94,7 +94,52 @@ Relative length units specify a length relative to another length property. Rela
 The em and rem units are practical in creating perfectly scalable layout!
 *Viewport = the browser window size. If the viewport is 50cm wide, 1vw = 0.5cm.
 
+## Resetting & Normalizing
 
+**Resetting** - Resetting is meant to strip all default browser styling on elements. For e.g. `margin`s, `padding`s, `font-size`s of all elements are reset to be the same. You will have to redeclare styling for common typographic elements.
 
+**Normalizing** - Normalizing preserves useful default styles rather than "unstyling" everything. It also corrects bugs for common browser dependencies.
+
+I would choose resetting when I have a very customized or unconventional site design such that I need to do a lot of my own styling and do not need any default styling to be preserved.
+
+## float
+
+The `float` property is used for positioning and formatting content. For exapmle, let an image float left to the text in a container.
+
+Floated elements remain a part of the flow of the page, and will affect the positioning of other elements (e.g. text will flow around floated elements).  [unlike `position: absolute` elements, which are removed from the flow of the page.]
+
+The CSS `clear` property can be used to be positioned below `left/right/both` floated elements.
+
+The float property can have one of the following values:
+
+- `left` - The element floats to the left of its container
+- `right` - The element floats to the right of its container
+- `none` - The element does not float (will be displayed just where it occurs in the text). This is default
+- `inherit` - The element inherits the float value of its parent
+
+## overflow
+
+The CSS `overflow` property controls what happens to content that is too big to fit into an area.
+
+The overflow property specifies whether to **clip the content or to add scrollbars** when the content of an element is too big to fit in the specified area.
+
+The overflow property has the following values:
+
+- `visible` - Default. The overflow is not clipped. The content renders outside the element's box
+- `hidden` - The overflow is clipped, and the rest of the content will be invisible
+- `scroll` - The overflow is clipped, and a scrollbar is added to see the rest of the content
+- `auto` - Similar to scroll, but it adds scrollbars only when necessary
+
+The overflow property only works for block elements with a specified height.
+
+## z-index
+
+The `z-index` property in CSS controls the vertical stacking order of elements that overlap. `z-index` only affects elements that have a `position` value which is not `static`.
+
+**Elements with non-static positioning** (and their children) will always appear on top of elements with default static positioning, regardless of HTML hierarchy.
+
+A stacking context is an element that contains a set of layers.
+
+An element can have a positive or negative stack order. 
 
 
