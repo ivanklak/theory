@@ -168,7 +168,7 @@ Items will be laid out following either the main axis (from main-start to main-e
 
 `main-start | main-end` – The flex items are placed within the container starting from main-start and going to main-end.
 
-**Flexbox properties**
+**Flexbox properties [flex container]**
 
 `dispay: flex | inline-flex` - It enables a flex context for all its direct children. `flex` value - the flex-container stay at full width. `inline-flex` - flex-container does not take up the entire widt, and acts as `inline-block` prop. 
 
@@ -192,6 +192,34 @@ Note that that browser support for these values is nuanced. For example, `space-
 - `flex-end`: items are placed **at the end of the cross axis**. 
 - `center`: items are **centered in the cross-axis**. 
 - `baseline`: items are aligned such as their baselines align. 
+
+`flex-wrap` - By default, flex items will all try to fit onto one line. You can change that and allow the items to wrap as needed. `.container { flex-wrap: nowrap | wrap | wrap-reverse; }`
+
+`flex-flow` - This is a shorthand for the flex-direction and flex-wrap properties, which together define the flex container’s main and cross axes. The default value is row nowrap. `flex-flow: row wrap;`
+
+**Flexbox properties [flex items]**
+
+`order` - By default, flex items are laid out in the source order. However, the order property controls the order in which they appear in the flex container. `.item { order: 5; }`
+
+`flex-grow` - This defines the **ability for a flex item to grow if necessary**. It accepts a unitless value that serves as a proportion. It dictates what amount of the available space inside the flex container the item should take up. `.item { flex-grow: 4; }`
+
+> If all items have `flex-grow` set to `1`, the remaining space in the container will be distributed **equally to all children**. If one of the children has a value of `2`, that child would take up **twice as much of the space either one of the others**.
+
+`flex-shrink` - This defines the ability for a flex item to shrink if necessary. `.item { flex-shrink: 3; }`
+
+`flex-basis` - This defines the default size of an element **before the remaining space is distributed**. It can be a length (e.g. 20%, 5rem, etc.) or a keyword. The `auto` keyword means “look at my width or height property”. `.item { flex-basis:  | auto; }`
+
+> If set to 0, the extra space around content isn’t factored in. If set to auto, the extra space is distributed based on its flex-grow value.
+
+`flex` - This is the shorthand for `flex-grow`, `flex-shrink` and `flex-basis` combined. The second and third parameters (flex-shrink and flex-basis) are optional. The default is `0 1 auto`, but if you set it with a single number value, like `flex: 5;`, that changes the flex-basis to 0%, so it’s like setting `flex-grow: 5; flex-shrink: 1; flex-basis: 0%;`.
+
+`.item { flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ] }`
+
+`align-self` - This allows the default alignment (or the one specified by `align-items`) to be overridden for individual flex items.
+
+`.item { align-self: auto | flex-start | flex-end | center | baseline | stretch; }`
+
+
 
 
 
