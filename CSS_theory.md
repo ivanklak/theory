@@ -142,4 +142,63 @@ A stacking context is an element that contains a set of layers.
 
 An element can have a positive or negative stack order. 
 
+## Flex & Grid
+
+**Flexbox** is mainly meant for 1-dimensional layouts while **Grid** is meant for 2-dimensional layouts.
+
+**Flexbox solves many common problems in CSS**, such as vertical centering of elements within a container, sticky footer, etc. Bootstrap is based on Flexbox, and it is probably the recommended way to create layouts these days. Have tried Flexbox before and I use it all the time. 
+
+Grid is by far the most intuitive approach for creating grid-based layouts (it better be!) but browser support is not wide at the moment.
+
+Flexbox layout is most appropriate to the components of an application, and small-scale layouts, while the Grid layout is intended for larger scale layouts.
+
+### Flex 
+
+- aims at providing a more efficient way to lay out, align and distribute space among items in a container. 
+
+The main idea behind the flex layout is to give the container the ability to alter its items’ width/height to best fill the available space. **A flex container expands items to fill available free space or shrinks them to prevent overflow.**
+
+<img width="561" alt="Снимок экрана 2022-03-24 в 15 49 30" src="https://user-images.githubusercontent.com/57959373/159910270-7845c6ec-3144-4d62-a1bd-d55a056f3566.png">
+
+Items will be laid out following either the main axis (from main-start to main-end) or the cross axis (from cross-start to cross-end).
+
+`main axis` – The main axis of a flex container is the primary axis along which flex items are laid out. Beware, it is **not necessarily horizontal**; it depends on the **flex-direction property**.
+
+`cross axis` – The axis **perpendicular to the main axis** is called the cross axis. Its direction depends on the main axis direction.
+
+`main-start | main-end` – The flex items are placed within the container starting from main-start and going to main-end.
+
+**Flexbox properties**
+
+`dispay: flex | inline-flex` - It enables a flex context for all its direct children. `flex` value - the flex-container stay at full width. `inline-flex` - flex-container does not take up the entire widt, and acts as `inline-block` prop. 
+
+`flex-direction: row | row-reverse | column | column-reverse` - This establishes **the main-axis**, thus defining the direction flex items are placed in the flex container. 
+
+**`justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right ... + safe | unsafe`** - This defines **the alignment along the main axis.** It helps distribute extra free space leftover. 
+
+- `flex-start` (default): items are packed toward the start of the flex-direction.
+- `flex-end`: items are packed toward the end of the flex-direction.
+- `center`: items are centered along the line
+- `space-between`: items are evenly distributed in the line; **first item is on the start line, last item on the end line**. 
+- `space-around`: items are evenly distributed in the line **with equal space around them**. Visually the spaces aren’t equal, since all the items have equal space on both sides. 
+- `space-evenly`: items are distributed so that **the spacing between any two items is equal**.
+
+Note that that browser support for these values is nuanced. For example, `space-between` never got support from some versions of Edge, and `start/end/left/right` aren’t in Chrome yet. The safest values are `flex-start, flex-end, and center`.
+
+**`align-items: stretch | flex-start | flex-end | center | baseline | first baseline | last baseline | start | end | self-start | self-end + ... safe | unsafe`** - This defines the default behavior for **how flex items are laid out along the cross axis on the current line.** 
+
+- `stretch` (default): stretch to fill the container (still respect min-width/max-width)
+- `flex-start`: items are placed **at the start of the cross axis**.
+- `flex-end`: items are placed **at the end of the cross axis**. 
+- `center`: items are **centered in the cross-axis**. 
+- `baseline`: items are aligned such as their baselines align. 
+
+
+
+
+
+
+
+
+
 
