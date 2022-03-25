@@ -397,7 +397,19 @@ const square = (num) => {
 }
 ```
 
+Arrow Functions can be used in the same way as Function Expressions.
+
 **Question**
+
+Difference between Function Expression, Function Decloration?
+
+> - Hoisting - We can call function decloration before its declared, and in the case of Error function - only after its declared. 
+> - Context: 
+    - Contex in function decloration: `this` refers to the place **where the function was called**
+    - Contex in arrow function: `this` refers to the place **where the function was created**
+> - We cannot call Arrow function with `new` keyword. It will will not create a Context
+> - We cannot use Arrow function as a Generator [it is only possible for function decloration], we cannot use `yeild`. 
+> - `call, apply, bind` methods are useless in arrow functions, because it will not change the initial context. 
 
 What's a typical use case for anonymous functions?
 
@@ -572,11 +584,17 @@ blach();
 
 **Context In Classes transmited using `new` operator**
 
+Contex in function decloration: `this` refers to the place **where the function was called**
+
+Contex in function expression: `this` refers to the place **where the function was created**
+
 **Errow functions**
 
 - don't create a new context, but refers to the endclosing function context, which in some cases might be a `window` object. 
 
 `this` in the function expression refers to parent scope, looking for variables. 
+
+When a function is called as **a method of an object**, the `this` keyword used in this function takes the value of the object in relation to which the method is called.
 
 ```js
 const car = {
