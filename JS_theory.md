@@ -518,6 +518,10 @@ Explain why the following doesn't work as an IIFE: `function foo(){ }()`
 
 A function that calls itself is called a **recursive function**. A call to a recursive function is called a recursive call.
 
+A recursive function must have a **termination condition**, if it is not specified, the function will be called until **the maximum recursion depth** is reached, then an exception will be generated.
+
+The total number of nested calls is called **the recursion depth**.
+
 As an example, we calculate the factorial using recursion:
 
 ```js
@@ -538,10 +542,6 @@ The execution of the program repeatedly **descends down until it hits the condit
 ## Context
 
 `Context` in JavaScript is related to objects. It refers to the object within the function being executed. `this` refers to the object that the function is executing in.
-
-A recursive function must have a **termination condition**, if it is not specified, the function will be called until **the maximum recursion depth** is reached, then an exception will be generated.
-
-The total number of nested calls is called **the recursion depth**.
 
 ```js
 const person = {
