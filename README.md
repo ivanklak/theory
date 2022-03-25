@@ -58,7 +58,38 @@ OPTIONS - description of connection parameters - we can find out which query met
 
 `CORS` - Cross-Origin Resource Sharing - a technology that **uses additional headers** to allow a user agent to get **permission to access resources from a server** on a domain other than what the site is currently using. 
 
+### SOLID
 
+`SOLID` - five design principles intended to make software designs more understandable, flexible, and maintainable. 
+
+> **SOLID stands for:**
+> - S - Single-responsiblity Principle
+> - O - Open-closed Principle
+> - L - Liskov Substitution Principle
+> - I - Interface Segregation Principle
+> - D - Dependency Inversion Principle 
+
+1. **Single-responsiblity Principle**. 
+
+> A class or function should have one and only one reason to change, meaning that a class should have only one job.
+
+2. **Open-Closed Principle**. 
+
+> Objects or entities should be open for extension but closed for modification. This means that a class should be extendable without modifying the class itself.
+
+3. **Liskov Substitution Principle**. 
+
+> It is necessary that subclasses could serve as a substitute for their superclasses.
+> In other words, as simple as that, a subclass should override the parent class methods in a way that does not break functionality from a client’s point of view. 
+
+4. **Interface Segregation Principle**
+
+> We should create highly specialized interfaces designed for a specific client. Clients should not depend on interfaces that they do not use.
+
+5. **Dependency Inversion Principle**
+
+> The object of the dependency should be an abstraction, not something concrete. 
+> In the process of software development, there is a moment when the functionality of the application ceases to fit within a single module. As a result, for example, it may turn out that high-level components depend on low-level components.
 
 
 
