@@ -91,9 +91,26 @@ OPTIONS - description of connection parameters - we can find out which query met
 > The object of the dependency should be an abstraction, not something concrete. 
 > In the process of software development, there is a moment when the functionality of the application ceases to fit within a single module. As a result, for example, it may turn out that high-level components depend on low-level components.
 
+### Server sidde rendering [SSR]
 
+**Server-side rendering (SSR) is an application's ability to convert HTML files on the server into a fully rendered HTML page for the client.** The web browser submits a request for information from the server, which instantly responds by sending a fully rendered page to the client.
 
+Some server-side rendering **advantages** include:
 
+- A server-side rendered application enables pages to **load faster**, improving the user experience.
+- When rendering server-side, **search engines can easily index and crawl content** because the content can be rendered before the page is loaded, which is ideal for SEO. 
+- Webpages are correctly indexed because web browsers prioritize web pages with faster load times.
+- Rendering server-side helps efficiently load webpages for users **with slow internet connection or outdated devices**.
 
+Server-side rendering **disadvantages** may include:
+
+- Rendering server-side can be costly and resource-intensive as it is not the default for JavaScript websites, and **the server takes on the full burden of rendering content** for users and bots.
+- While rendering static HTML server-side is efficient, **rendering bigger, more complex applications server-side can increase load times.** 
+- Server-side rendering may not be compatible with third-party JavaScript code. 
+- Rendering server-side may be ideal for static site generation, but frequent server requests and full page reloads can result in overall slower page rendering in more complex applications. 
+
+### What is a static website?
+
+A static website is made up of one or more HTML webpages that load the same way every time. Static websites contrast with dynamic websites, which load differently based on any number of changing data inputs, such as the user's location, the time of day, or user actions. While static webpages are simple HTML files that can load quickly, dynamic webpages require the execution of JavaScript code within the browser in order to render.
 
 
