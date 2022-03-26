@@ -10,7 +10,9 @@
 
 **Heap** - memory allocation. 
 
-**Browsers/Web API`s** - API to support complex operations, and to help accessing data
+**Browsers/Web APIs** - Application Programming Interface for the Web. All browsers have a set of built-in Web APIs to support complex operations, and to help accessing data.
+
+For example, the Geolocation API can return the coordinates of where the browser is located.
 
 For example:
 ```
@@ -112,5 +114,38 @@ Server-side rendering **disadvantages** may include:
 ### What is a static website?
 
 A static website is made up of one or more HTML webpages that load the same way every time. Static websites contrast with dynamic websites, which load differently based on any number of changing data inputs, such as the user's location, the time of day, or user actions. While static webpages are simple HTML files that can load quickly, dynamic webpages require the execution of JavaScript code within the browser in order to render.
+
+### AJAX - Asynchronous JavaScript And XML.
+
+**AJAX allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes**. This means that it is possible to update parts of a web page, without reloading the whole page.
+
+Using AJAX you can:
+
+- Read data from a web server - after the page has loaded
+- Update a web page without reloading the page
+- Send data to a web server - in the background
+
+AJAX just uses a combination of:
+
+- A browser built-in `XMLHttpRequest` object (to request data from a web server)
+- JavaScript and HTML DOM (to display or use the data)
+
+I guess, Almost no one uses XML data and Use the JSON data instead. 
+
+`JSON` stands for JavaScript Object Notation. JSON is a text format for storing and transporting data. 
+
+Modern Browsers can use Fetch API instead of the XMLHttpRequest Object. The Fetch API interface allows web browser to make HTTP requests to web servers.
+
+**The Fetch API** interface allows web browser to make HTTP requests to web servers.
+
+
+
+
+
+
+
+
+
+
 
 
