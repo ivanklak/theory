@@ -145,6 +145,8 @@ the main difference between `CSR` and `SSR` is where the page is rendered. SSR r
 - if your site has rich interactions
 - if you are building a web application
 
+**SEO [Search Engine Optimization]** — a set of measures to increase the visibility of the site in search engines for targeted search queries.
+
 ### What is a static website?
 
 A static website is made up of one or more HTML webpages that load the same way every time. Static websites contrast with dynamic websites, which load differently based on any number of changing data inputs, such as the user's location, the time of day, or user actions. While static webpages are simple HTML files that can load quickly, dynamic webpages require the execution of JavaScript code within the browser in order to render.
