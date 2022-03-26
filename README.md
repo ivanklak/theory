@@ -93,9 +93,9 @@ OPTIONS - description of connection parameters - we can find out which query met
 > The object of the dependency should be an abstraction, not something concrete. 
 > In the process of software development, there is a moment when the functionality of the application ceases to fit within a single module. As a result, for example, it may turn out that high-level components depend on low-level components.
 
-### Server sidde rendering [SSR]
+### Server Side Rendering [SSR]
 
-**Server-side rendering (SSR) is an application's ability to convert HTML files on the server into a fully rendered HTML page for the client.** The web browser submits a request for information from the server, which instantly responds by sending a fully rendered page to the client.
+**Server-side rendering (SSR) is the ability of a web application to render the web page on the server instead of rendering it in the browser.** When the page arrived on the client-side, it is fully rendered. It is because the server-side has fully rendered the page before it was sent by the server to the client.
 
 Some server-side rendering **advantages** include:
 
@@ -110,6 +110,40 @@ Server-side rendering **disadvantages** may include:
 - While rendering static HTML server-side is efficient, **rendering bigger, more complex applications server-side can increase load times.** 
 - Server-side rendering may not be compatible with third-party JavaScript code. 
 - Rendering server-side may be ideal for static site generation, but frequent server requests and full page reloads can result in overall slower page rendering in more complex applications. 
+
+### Client Side Rendering [CSR]
+
+CSR is the opposite of SSR. If the SSR renders the page on the server-side, **CSR renders the page on the client-side**. 
+
+When the request is received on the server, it will not render the page, instead, the server will send a single page that will be the skeleton of the page to the client. The server sends the page along with the javascript file. Later, the js will turn the page into a fully rendered page. If the page needs to take data, the client will make a request to the `API` to take the data and then render it to the page. Lastly, if the client navigates to a different route, the server will not send the page again, instead, the client will re-render the page according to the route that client requested. So the page that is used, is always the same page as the first request.
+
+**advantages**
+
+- ideal for Web apps
+- fast rendering after initial load
+- rich site interaction
+- reduce server load
+
+**disadvantages**
+
+- Slover initial load time
+- SEO is not priority
+- Higher memory consumption
+
+**The difference**
+
+the main difference between `CSR` and `SSR` is where the page is rendered. SSR renders the page on the server-side and CSR renders the page on the client-side. **Client-side manages the routing dynamically without refreshing the page every time the client requests a different route.**
+
+**use SSR**
+- if SEO is your priority, typically when you are building a blog site and you want everyone who searching on google go to your website, then SSR is your choice.
+- if your website needs a faster initial loading.
+- if the content of your website doesn't need much user interaction.
+
+**use CSR**
+
+- when SEO is not your priority
+- if your site has rich interactions
+- if you are building a web application
 
 ### What is a static website?
 
