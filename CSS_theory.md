@@ -156,7 +156,7 @@ Flexbox layout is most appropriate to the components of an application, and smal
 
 - aims at providing a more efficient way to lay out, align and distribute space among items in a container. 
 
-The main idea behind the flex layout is to give the container the ability to alter its items’ width/height to best fill the available space. **A flex container expands items to fill available free space or shrinks them to prevent overflow.**
+The main idea behind the flex layout is to give the container the ability to change its items width/height to best fill the available space. **A flex container expands items to fill available free space or shrinks them to prevent overflow.**
 
 <img width="561" alt="Снимок экрана 2022-03-24 в 15 49 30" src="https://user-images.githubusercontent.com/57959373/159910270-7845c6ec-3144-4d62-a1bd-d55a056f3566.png">
 
@@ -219,7 +219,94 @@ Note that that browser support for these values is nuanced. For example, `space-
 
 `.item { align-self: auto | flex-start | flex-end | center | baseline | stretch; }`
 
+### Grid
 
+- is a two-dimensional grid-based layout system. 
+
+To get started you have to define a container element as a grid with `display: grid`, set the column and row sizes with `grid-template-columns` and `grid-template-rows`, and then place its child elements into the grid with `grid-column` and `grid-row`.
+
+**Properties for the Parent [Grid Container)]**
+
+`display: grid | inline-grid;` - Defines the element as a grid container. `grid` – generates a block-level grid. `inline-grid` – generates an inline-level grid. 
+
+`grid-template-columns & grid-template-rows` - Defines the columns and rows of the grid with a space-separated list of values. The values represent the **track size, and the space between them** represents the grid line.
+
+```css
+ grid-template-rows: 1fr 1fr 1fr;
+ grid-template-columns: repeat(3 , 1fr)
+```
+
+The shorthand: `grid-template: none | <grid-template-rows> / <grid-template-columns>;`
+
+```css
+.container {
+  grid-template: 1fr 1fr / 1fr 1fr;
+}
+```
+
+**The unit of length `fr` is a fraction of the available space in the grid container**. The `fr` unit (a “fraction”) can be used when defining grids like any other CSS length such as ``%, px, em``. It allows you to create elastic (flexible) grid tracks. 
+
+**Grid lines are automatically assigned positive numbers** from these assignments (-1 being an alternate for the very last row).
+
+We also can choose to explicitly name the lines. Note the bracket syntax for the line names:
+
+```css
+.container {
+  grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+  grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+}
+```
+
+`grid-template-areas` - Defines a grid template by referencing the names of the grid areas which are specified with the grid-area property.
+
+For example, we want to create an application with a header, sidebar, main area and footer. We will set the `grid-area` property to each of these elements.  And set the `grid-template-areas` property to the container, we will be able to arrange these elements in a container.
+
+```css
+.item-a {
+  grid-area: header;
+}
+.item-b {
+  grid-area: main;
+}
+.item-c {
+  grid-area: sidebar;
+}
+.item-d {
+  grid-area: footer;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "header header header header"
+    "main main . sidebar"
+    "footer footer footer footer";
+}
+```
+That’ll create a grid that’s four columns wide by three rows tall. The entire top row will be composed of the header area. The middle row will be composed of two main areas, one empty cell, and one sidebar area. The last row is all footer.
+
+Repeating the name of a grid area causes the content to span those cells.
+
+In order for the **header** to be the full length of the screen, we must repeat it as many times as we have columns in the application.
+
+<img width="368" alt="Снимок экрана 2022-03-27 в 20 08 27" src="https://user-images.githubusercontent.com/57959373/160290372-38ffef2c-c23d-461c-a642-0d06258d07d3.png">
+
+**grid gap** - Specifies the size of the grid lines. Set the width of the gutters between the columns/rows.
+
+```css
+.container {
+  column-gap: <line-size>;
+  row-gap: <line-size>;
+}
+```
+
+or: 
+
+```css
+gap: <grid-row-gap> <grid-column-gap>;
+```
 
 
 
