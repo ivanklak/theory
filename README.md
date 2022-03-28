@@ -12,13 +12,7 @@
 
 **Browsers/Web APIs** - Application Programming Interface for the Web. All browsers have a set of built-in Web APIs to support complex operations, and to help accessing data.
 
-For example, the Geolocation API can return the coordinates of where the browser is located.
-
-For example:
-```
-setTimout()
-setInterval()
-```
+For example, the Geolocation API can return the coordinates of where the browser is located. O Timers: `setTimout(), setInterval()`. 
 
 **HTML** - (Hyper Text Markup Language) - markaup language that we use to structure our components. 
 
@@ -178,8 +172,47 @@ Modern Browsers can use Fetch API instead of the XMLHttpRequest Object. The Fetc
 
 **The Fetch API** interface allows web browser to make HTTP requests to web servers.
 
+## SDLC [Software Development Life Cycl]
 
+refers to a methodology, that provides a well-structured flow of phases that help an organization to quickly produce high-quality software which is well-tested and ready for production use. 
 
+In detail, the SDLC methodology focuses on the following phases of software development:
+
+- Requirement analysis
+- Planning
+- Software design such as architectural design
+- Software development
+- Testing
+- Deployment
+
+That plan starts by evaluating existing systems for deficiencies. Next, it defines the requirements of the new system. It then creates the software through the stages of analysis, planning, design, development, testing, and deployment.
+
+## Agile 
+
+It is used as an effective practice of organizing the work of small multifunctional teams to improve solutions, planning and flexible response to changes in requirements.
+
+## SCRUM 
+
+framework - this is a set of rules for organizing a flexible workflow, which consists in a team approach, working in iterations, focusing on the goal of each iteration and non-standard distribution of responsibilities within the team.
+
+When working on Scrum, you create universal product teams that consist of designers, marketers, and developers. and everyone who is needed in the work is part of the team.
+
+- In addition, the product owner is always present (focuses on the value of the product, decides what to do first) and the scrum master (focuses on the effectiveness of the team, helps the team improve workflows and solve external problems).
+
+**Scrum work is based on "sprints"** — these are periods lasting from 7 to 30 days, it all depends on the composition of the team and the project. For each sprint, a goal is formed, according to which the results are summed up. 
+
+- **Sprint Review**. The purpose of the Sprint Review is to inspect the result of the Sprint and determine future adaptations. The Team presents the results of their work to stakeholders and progress toward the Product Goal is discussed.
+
+- **Sprint Retrospective**. The purpose of the Sprint Retrospective is to plan ways to increase quality and effectiveness. The Team inspects how the last Sprint went with regards to individuals, interactions, processes, tools, and their Definition of Done. Inspected elements often vary with the domain of work.
+
+The approach involves regular monitoring of work, which allows you to evaluate intermediate results. Thanks to Scrum, you can analyze whether the team is moving in the right direction and whether it is possible to solve problems with the least effort.
+
+- **Product Backlog**. The Product Backlog is an emergent, ordered list of what is needed to improve the product. It is the single source of work undertaken by the Scrum Team.
+
+**The main feature of Scrum is flexibility.** You can always make new ideas to the project or other necessary changes. The methodology allows you to gradually go to the desired result and check the effectiveness and value of the work done along the way.
+
+> How would you explain what is a sprint to someone who doesn't have experience in product development?
+Sprint is a 2-4 weeks activity in which you commit to develop some functions. In each sprint we have some key meetings: grooming, daily, retrospective. The main goal of each sprint to report some features at the end.
 
 
 
