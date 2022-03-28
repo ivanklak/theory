@@ -60,6 +60,10 @@ OPTIONS - description of connection parameters - we can find out which query met
 
 `CORS` - Cross-Origin Resource Sharing - a technology that **uses additional headers** to allow a user agent to get **permission to access resources from a server** on a domain other than what the site is currently using. 
 
+### CDN - Content Delivery Network - is a group of geographically distributed servers that speed up the delivery of web content by bringing it closer to where users are.
+
+The data is distributed evenly around the world, which makes it easier to access and we can get information faster.
+
 ### SOLID
 
 `SOLID` - five design principles intended to make software designs more understandable, flexible, and maintainable. 
@@ -173,9 +177,6 @@ I guess, Almost no one uses XML data and Use the JSON data instead.
 Modern Browsers can use Fetch API instead of the XMLHttpRequest Object. The Fetch API interface allows web browser to make HTTP requests to web servers.
 
 **The Fetch API** interface allows web browser to make HTTP requests to web servers.
-
-
-
 
 
 
