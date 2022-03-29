@@ -1,5 +1,9 @@
 # Questions
 
+## Semantic HTML
+
+what does it mean? semantic tags?
+
 ## What does a DOCTYPE do?
 
 `DOCTYPE` is an abbreviation for **Document Type**. 
@@ -24,7 +28,10 @@ When an HTTP request is made to a server, the requesting user agent usually send
 - Earlier frontend developers used `data-` attributes to store extra data within the DOM itself. 
 - For testing: data-testid
 
-
-
+Что делать сначала, когда только начинаешь новый проект?
+- prepare some basic layout, just a tamblate for HTML file 
+- what kind of sections and other information I would like to put on the webpage
+- start create div and containers to see how the layout will look like
+- build it from the top to bottom, If I would scroll down the page I would see what I wanna see next and probably working on that things 
 
 
