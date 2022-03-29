@@ -45,7 +45,14 @@ For example, the Geolocation API can return the coordinates of where the browser
 
 `HTTP method` is **idempotent** if a repeated identical request has the same effect without changing the state of the server.
 
-Idempotent mothods: GE, PUT, DELETE, OPTIONS
+Methods are depending on what you wanna do: 
+
+- if you what to get access and read an infotmation from the server you need to use `GET` method for HTTP request. 
+- another example would be when you want to remove something from the server, use can use `DELETE` method. 
+- when you want to creating something that doesnt exists, you use `POST` mwthod
+- when you want to edit something that already existing [I mean update it with new information], you use `PUT` method. 
+
+Idempotent mothods: GET, PUT, DELETE, OPTIONS
 non-idempotent mothod: POST - a repeated call can, for example, place an order on the website 2 times. 
 
 OPTIONS - description of connection parameters - we can find out which query methods the server supports. 
