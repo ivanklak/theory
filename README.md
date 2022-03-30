@@ -206,6 +206,14 @@ When working on Scrum, you create universal product teams that consist of design
 
 - In addition, the product owner is always present (focuses on the value of the product, decides what to do first) and the scrum master (focuses on the effectiveness of the team, helps the team improve workflows and solve external problems).
 
+About **SCRUM process**:
+
+1)	**Grooming** is the process before the sprint started (dicsuss the all tickets). In grooming we check the all tasks and produt manager/owner explain that developers should do (explain). And team start to discuss it. After that, the team evaluates the complexity of the tasks in points. 1 point is 1 work day. Development + testings including in points.
+2)	Next is **sprint planning**. Which tasks we should take (asap tasks probably [urgent tasks], after check points and take something again). 
+3)	After planning step the **sprint is officially started**. at **Daily stand-ups**, everyone tells you what you did yesterday and what you will do today. You can discuss some problems. 
+4)	Sometimes **demo meeting** show to stakeholder the progress (PM?)
+5)	**Retrospective** explain what was good (the positive moments). After negatives moments (problems). Don’t say who is responsible just explain the situation and try to solving. You sould find a solution. Write action items!! So don’t repeat the previous problems. 
+
 **Scrum work is based on "sprints"** — these are periods lasting from 7 to 30 days, it all depends on the composition of the team and the project. For each sprint, a goal is formed, according to which the results are summed up. 
 
 - **Sprint Review**. The purpose of the Sprint Review is to inspect the result of the Sprint and determine future adaptations. The Team presents the results of their work to stakeholders and progress toward the Product Goal is discussed.
