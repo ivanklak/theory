@@ -35,6 +35,8 @@ For example, the Geolocation API can return the coordinates of where the browser
 
 `REST` - Representatinal State Transfer - a set of rules that define how a programmer can organize the writing of a server-side web application code so that all systems can easily exchange data and the application can be scaled. 
 
+Rules - HTTP methods
+
 `RESTful` - the service is written according to all REST rules - it is an application that provides a list of URLs with which the server can accept requests such as: GET, PUT, POST, DELETE or OPTIONS. Using the URL, the service understands which data to work with and which objects to get or update or delete.
 
 **HTTP**
@@ -49,7 +51,7 @@ Methods are depending on what you wanna do:
 
 - if you what to get access and read an infotmation from the server you need to use `GET` method for HTTP request. 
 - another example would be when you want to remove something from the server, use can use `DELETE` method. 
-- when you want to creating something that doesnt exists, you use `POST` mwthod
+- when you want to creating something that doesnt exists, you use `POST` method
 - when you want to edit something that already existing [I mean update it with new information], you use `PUT` method. 
 
 Idempotent mothods: GET, PUT, DELETE, OPTIONS
@@ -57,11 +59,50 @@ non-idempotent mothod: POST - a repeated call can, for example, place an order o
 
 OPTIONS - description of connection parameters - we can find out which query methods the server supports. 
 
+### AJAX - Asynchronous JavaScript And XML.
+
+**AJAX allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes**. This means that it is possible to update parts of a web page, without reloading the whole page.
+
+Using AJAX you can:
+
+- Read data from a web server - after the page has loaded
+- Update a web page without reloading the page
+- Send data to a web server - in the background
+
+AJAX just uses a combination of:
+
+- A browser built-in `XMLHttpRequest` object (to request data from a web server)
+- JavaScript and HTML DOM (to display or use the data)
+
+I guess, Almost no one uses XML data and Use the JSON data instead. 
+
+`JSON` stands for JavaScript Object Notation. JSON is a text format for storing and transporting data. 
+
+Modern Browsers can use Fetch API instead of the XMLHttpRequest Object. The Fetch API interface allows web browser to make HTTP requests to web servers.
+
+**The Fetch API** interface allows web browser to make HTTP requests to web servers.
+
 **CORS**
 
 `CORS` - Cross-Origin Resource Sharing - a technology that **uses additional headers** to allow a user agent to get **permission to access resources from a server** on a domain other than what the site is currently using. 
 
-### CDN - Content Delivery Network - is a group of geographically distributed servers that speed up the delivery of web content by bringing it closer to where users are.
+for example: let's say we have some client application working with our API. But keep in mind that our API is located at http://localhost:3000, and our client is posted on http://localhost:8000. And it won't work! until we add the Access-Control-Allow-Origin header in the server.
+
+The reason we won't get a response in JavaScript is the `Same-Origin Policy`. This restrictive measure is necessary so that a website cannot receive a response to an AJAX-generated request to another website located at a different address.
+
+When a request is made to another source, the client automatically inserts an additional `Origin` header into the HTTP request. The value of this header reflects the source of the request.
+
+To allow JavaScript to work on third-party sites (like mine localhost:8000) to access our API responses, we need to include CORS in the response header from the server.
+
+`res.set('Access-Control-Allow-Origin', '*')` [`*` is asterisk... WTF]
+
+If we are creating a server to which our domain should have access, then we need to add the application domain to the value of the `Access-Control-Allow-Origin` header. `Access-Control-Allow-Origin: http://localhost:8000`
+
+> In other words, no domain other than http://localhost:8000 (which is defined by ORIGIN: header in the request), cannot access the resource in a cross-site way. The Access-Control-Allow-Origin header must contain the value that was sent in the Origin header of the request.
+
+### CDN 
+
+- Content Delivery Network - is a group of geographically distributed servers that speed up the delivery of web content by bringing it closer to where users are.
 
 The data is distributed evenly around the world, which makes it easier to access and we can get information faster.
 
@@ -155,29 +196,6 @@ the main difference between `CSR` and `SSR` is where the page is rendered. SSR r
 ### What is a static website?
 
 A static website is made up of one or more HTML webpages that load the same way every time. Static websites contrast with dynamic websites, which load differently based on any number of changing data inputs, such as the user's location, the time of day, or user actions. While static webpages are simple HTML files that can load quickly, dynamic webpages require the execution of JavaScript code within the browser in order to render.
-
-### AJAX - Asynchronous JavaScript And XML.
-
-**AJAX allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes**. This means that it is possible to update parts of a web page, without reloading the whole page.
-
-Using AJAX you can:
-
-- Read data from a web server - after the page has loaded
-- Update a web page without reloading the page
-- Send data to a web server - in the background
-
-AJAX just uses a combination of:
-
-- A browser built-in `XMLHttpRequest` object (to request data from a web server)
-- JavaScript and HTML DOM (to display or use the data)
-
-I guess, Almost no one uses XML data and Use the JSON data instead. 
-
-`JSON` stands for JavaScript Object Notation. JSON is a text format for storing and transporting data. 
-
-Modern Browsers can use Fetch API instead of the XMLHttpRequest Object. The Fetch API interface allows web browser to make HTTP requests to web servers.
-
-**The Fetch API** interface allows web browser to make HTTP requests to web servers.
 
 ## SDLC [Software Development Life Cycl]
 
