@@ -274,6 +274,70 @@ that is, we are **extending the prototype of the parent class**.
 
 This is necessary, for example, not to import a function or object, but to immediately call the desired method.
 
+### Дескрипторы
+
+Помимо значения `value`, свойства объекта имеют три специальных атрибута (так называемые «флаги»).
+
+- `writable` – если `true`, свойство можно изменить, иначе оно только для чтения.
+- `enumerable` – если `true`, свойство перечисляется в циклах, в противном случае циклы его игнорируют.
+- `configurable` – если `true`, свойство можно удалить, а эти атрибуты можно изменять, иначе этого делать нельзя.
+
+Когда мы создаём свойство «обычным способом», все они имеют значение `true`. Но мы можем изменить их в любое время.
+
+Метод `Object.getOwnPropertyDescriptor` позволяет получить полную информацию о свойстве.
+
+```js
+let descriptor = Object.getOwnPropertyDescriptor(obj, propertyName);
+```
+Возвращаемое значение – это объект, так называемый «дескриптор свойства»: он содержит значение свойства и все его флаги.
+
+Чтобы изменить флаги, мы можем использовать метод `Object.defineProperty`.
+
+```js
+Object.defineProperty(obj, propertyName, descriptor)
+```
+
+Если свойство существует, `defineProperty` обновит его флаги. В противном случае метод создаёт новое свойство с указанным значением и флагами; если какой-либо флаг не указан явно, ему присваивается значение `false`.
+
+```js
+let user = {};
+
+Object.defineProperty(user, "name", {
+  value: "John",  
+  "writable": false
+});
+
+let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+
+console.log(descriptor);
+
+{
+  "value": "John",
+  "writable": false,
+  "enumerable": false,
+  "configurable": false
+}
+```
+
+**Неперечислимое свойство**
+
+Теперь добавим собственный метод **toString** к объекту user.
+
+Встроенный метод **toString** в объектах – неперечислимый, его не видно в цикле `for..in`. Но если мы напишем свой собственный метод toString в объекте user, цикл `for..in` будет выводить его по умолчанию:
+
+```js
+let user = {
+  name: "John",
+  toString() {
+    return this.name;
+  }
+};
+
+// По умолчанию оба свойства выведутся:
+for (let key in user) alert(key); // name, toString
+```
+Если мы этого не хотим, можно установить для свойства enumerable:false. Тогда оно перестанет появляться в цикле for..in. 
+
 ## Classes
 
 is an extensible code template for creating objects that sets their initial values(properties) and behavior implementation(methods).  
