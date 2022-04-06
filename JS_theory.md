@@ -619,6 +619,13 @@ The execution of the program repeatedly **descends down until it hits the condit
 
 `Context` in JavaScript is related to objects. It refers to the object within the function being executed. `this` refers to the object that the function is executing in.
 
+**this** - to access information inside an object, the method can use `this` keyword. `this` - is a reference to the some object and depends on how the function is called: 
+
+- If the `new` keyword is used when calling the function, `this` inside the function [constructor] is **a brand new object**.
+- If `apply`, `call`, or `bind` are used to call/create a function [involke function with Context], `this` inside the function is **the object that is passed in as the argument**.
+- If arrow function uses as a object method, `this` is the **global object**. In a browser, it is the `window` object.
+- If the function is an **arrow function**, it receives the `this` value of its surrounding scope at the time it is created.
+
 ```js
 const person = {
   surname: 'Stark',
